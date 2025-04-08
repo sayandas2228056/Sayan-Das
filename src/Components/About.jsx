@@ -126,7 +126,7 @@ const About = () => {
                 <a href="https://linkedin.com/in/sayan-das-b99810213" target="_blank" rel="noopener noreferrer" className="bg-violet-600 p-2 rounded-full hover:bg-violet-500 transition-colors">
                   <FaLinkedin className="text-white text-sm sm:text-base" />
                 </a>
-                <a href="https://github.com/yourgithub" target="_blank" rel="noopener noreferrer" className="bg-violet-600 p-2 rounded-full hover:bg-violet-500 transition-colors">
+                <a href="https://github.com/sayandas2228056" target="_blank" rel="noopener noreferrer" className="bg-violet-600 p-2 rounded-full hover:bg-violet-500 transition-colors">
                   <FaGithub className="text-white text-sm sm:text-base" />
                 </a>
               </div>
