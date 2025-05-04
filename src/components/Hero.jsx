@@ -1,13 +1,14 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const heroSectionRef = useRef(null);
+  const [bgImageLoaded, setBgImageLoaded] = useState(false);
 
   useGSAP(() => {
     // Setting up the clip path animation for the hero frame
@@ -38,6 +39,12 @@ const Hero = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/img/Xander.jpg';
+    img.onload = () => setBgImageLoaded(true);
+  }, []);
+
   return (
     <section id="home" className="relative w-screen overflow-x-hidden h-dvh">
       <div className="relative w-screen overflow-x-hidden h-dvh">
@@ -45,7 +52,7 @@ const Hero = () => {
           id="hero-frame"
           ref={heroSectionRef}
           className="relative z-10 w-screen overflow-hidden bg-black bg-center bg-cover rounded-lg h-dvh"
-          style={{ backgroundImage: "url('/img/Xander.jpg')" }}
+          style={{ backgroundImage: bgImageLoaded ? "url('/img/Xander.jpg')" : "url('/img/placeholder.jpg')" }}
         >
           <div className="absolute top-0 left-0 z-40 size-full bg-black/50">
             <div className="flex flex-col items-center gap-8 px-5 mt-24 sm:px-10 lg:flex-row lg:gap-16">
