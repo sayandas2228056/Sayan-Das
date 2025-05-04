@@ -34,7 +34,7 @@ const Hero = () => {
       y: 50,
       opacity: 0,
       stagger: 0.2,
-      duration: 1.5, // Increase duration for smoother animation
+      duration: 1,
       ease: "power2.out",
     });
   }, []);
@@ -42,11 +42,7 @@ const Hero = () => {
   useEffect(() => {
     const img = new Image();
     img.src = '/img/Xander.jpg';
-    img.onload = () => {
-      setBgImageLoaded(true);
-      // Add fade-in effect once the image is loaded
-      gsap.to("#hero-frame", { opacity: 1, duration: 1.5 });
-    };
+    img.onload = () => setBgImageLoaded(true);
   }, []);
 
   return (
@@ -55,12 +51,13 @@ const Hero = () => {
         <div
           id="hero-frame"
           ref={heroSectionRef}
-          className="relative z-10 w-screen overflow-hidden bg-black bg-center bg-cover rounded-lg opacity-0 h-dvh" // Make the frame initially hidden
+          className="relative z-10 w-screen overflow-hidden bg-black bg-center bg-cover rounded-lg h-dvh"
           style={{ backgroundImage: bgImageLoaded ? "url('/img/Xander.jpg')" : "url('/img/placeholder.jpg')" }}
         >
           <div className="absolute top-0 left-0 z-40 size-full bg-black/50">
             <div className="flex flex-col items-center gap-8 px-5 mt-24 sm:px-10 lg:flex-row lg:gap-16">
-               {/* Text Content */}
+              
+              {/* Text Content */}
               <div>
                 <h2 className="text-lg font-semibold text-gray-300 sm:text-2xl md:text-3xl hero-text-animation">
                   Hey I'm
@@ -99,7 +96,9 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Profile Image */}
+              {/* Profile Image (Moved to the right side and increased size) */}
+              
+
             </div>
 
             {/* Social Icons */}
