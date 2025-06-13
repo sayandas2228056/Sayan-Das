@@ -1,7 +1,7 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import photo from "../assets/photo.jpg";
 gsap.registerPlugin(ScrollTrigger);
@@ -9,6 +9,23 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   const heroSectionRef = useRef(null);
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  // Preload the background image
+  useEffect(() => {
+    const img = new Image();
+    img.src = "/img/Xander.jpg";
+    
+    img.onload = () => {
+      setImageLoaded(true);
+    };
+    
+    img.onerror = () => {
+      setImageError(true);
+      console.error("Failed to load background image");
+    };
+  }, []);
 
   useGSAP(() => {
     // Setting up the clip path animation for the hero frame
@@ -53,8 +70,33 @@ const Hero = () => {
           id="hero-frame"
           ref={heroSectionRef}
           className="relative z-10 w-screen overflow-hidden bg-black bg-center bg-cover rounded-lg h-dvh"
-          style={{ backgroundImage: "url('/img/Xander.jpg')" }}
         >
+          {/* Background Image with Blur-up Loading */}
+          <div 
+            className={`absolute inset-0 transition-all duration-1000 ${
+              imageLoaded ? 'opacity-100 blur-0' : 'opacity-0 blur-xl'
+            }`}
+            style={{
+              backgroundImage: `url(${imageError ? '/img/fallback-bg.jpg' : '/img/Xander.jpg'})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}
+          />
+          
+          {/* Low-quality placeholder */}
+          <div 
+            className={`absolute inset-0 transition-all duration-1000 ${
+              imageLoaded ? 'opacity-0' : 'opacity-100'
+            }`}
+            style={{
+              backgroundImage: `url(${imageError ? '/img/fallback-bg.jpg' : '/img/Xander.jpg'})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'blur(20px)',
+              transform: 'scale(1.1)',
+            }}
+          />
+
           <div className="absolute top-0 left-0 z-40 size-full bg-black/50">
             <div className="flex flex-col items-center justify-center h-full gap-8 px-5 sm:px-10 lg:flex-row lg:gap-16 lg:justify-between lg:px-20">
               
@@ -108,6 +150,7 @@ const Hero = () => {
                       src={photo}
                       alt="Sayan Das"
                       className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
+                      loading="eager"
                     />
                   </div>
                   <div className="absolute inset-0 border-4 rounded-full animate-pulse border-orange-500/20"></div>
