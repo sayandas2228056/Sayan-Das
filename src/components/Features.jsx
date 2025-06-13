@@ -7,9 +7,8 @@ import Projects from "./Projects";
 import React from "react"; 
 import { motion } from "framer-motion";
 import { FaCode, FaServer, FaCloud, FaLaptopCode, FaChartLine, FaBrain } from "react-icons/fa";
-import Expertise from "./Expertise";
-
-
+import Expertise from "./Expertise"
+import Internship from "./Internship"
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -116,9 +115,9 @@ const Features = () => (
            <AbtBox/>
           </div>
         </div>
-        
+        <Internship/>
         <Projects/>
-
+  
         <h1 className="text-white special-font hero-heading flex-center">
         <b>My</b> <b className='text-orange-600'>Expertise</b>
       </h1>

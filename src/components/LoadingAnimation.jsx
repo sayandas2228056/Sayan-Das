@@ -6,11 +6,8 @@ const LoadingAnimation = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress((prevProgress) => {
-        const newProgress = prevProgress + Math.random() * 10;
-        return newProgress >= 100 ? 100 : newProgress;
-      });
-    }, 200);
+      setProgress((prev) => Math.min(prev + Math.random() * 3 + 1, 100));
+    }, 50);
 
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -25,56 +22,87 @@ const LoadingAnimation = () => {
   if (!isLoading) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
-      {/* Logo animation */}
-      <div className="relative w-32 h-32 mb-8">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-white via-orange-400 to-red-500 animate-pulse"></div>
-        <div className="absolute flex items-center justify-center overflow-hidden bg-black rounded-full inset-2">
-          <img
-            src="/Logo.jpg"
-            alt="Logo"
-            className="object-contain w-full h-full rounded-full cursor-pointer"
+    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+      {/* Floating Dots */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(9)].map((_, index) => (
+          <div
+            key={index}
+            className="absolute w-2 h-2 rounded-full bg-orange-500/30 animate-float"
+            style={{
+              left: `${(index + 1) * 10}%`,
+              animationDelay: `${index * 0.5}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10 text-center">
+        {/* Logo */}
+        <div className="mb-8 text-6xl font-bold tracking-wider text-white animate-glow">
+          SAYAN DAS
+        </div>
+
+        {/* Loading Text */}
+        <div className="mb-12 text-xl text-orange-400 animate-fade-in-out">
+          Welcome to my portfolio
+        </div>
+
+        {/* Spinner */}
+        <div className="w-16 h-16 mx-auto mb-8 border-4 rounded-full border-orange-500/30 border-t-orange-500 animate-spin" />
+
+        {/* Progress Bar */}
+        <div className="h-1 mx-auto mb-4 overflow-hidden rounded-full w-72 bg-orange-500/20">
+          <div
+            className="h-full transition-all duration-300 ease-out bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300"
+            style={{ width: `${progress}%` }}
           />
         </div>
 
-        {/* Orbiting elements */}
-        <div
-          className="absolute w-4 h-4 bg-white rounded-full animate-orbit-1"
-          style={{ animationDuration: "3s" }}
-        ></div>
-        <div
-          className="absolute w-3 h-3 bg-orange-400 rounded-full animate-orbit-2"
-          style={{ animationDuration: "4s" }}
-        ></div>
-        <div
-          className="absolute w-2 h-2 bg-red-500 rounded-full animate-orbit-3"
-          style={{ animationDuration: "5s" }}
-        ></div>
+        {/* Percentage */}
+        <div className="text-sm font-light tracking-wider text-orange-400">
+          {Math.round(progress)}%
+        </div>
       </div>
 
-      {/* Progress bar */}
-      <div className="w-64 h-2 overflow-hidden bg-gray-800 rounded-full">
-        <div
-          className="h-full transition-all duration-300 ease-out bg-gradient-to-r from-white via-orange-400 to-red-500"
-          style={{ width: `${progress}%` }}
-        ></div>
-      </div>
+      <style>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(100vh);
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+        }
 
-      {/* Loading text */}
-      <div className="mt-4 font-medium text-white">
-        {progress < 100 ? (
-          <div className="flex items-center">
-            The Portfolio Site is loading
-            <span className="inline-flex ml-2">
-              <span className="animate-bounce-delay-1">.</span>
-              <span className="animate-bounce-delay-2">.</span>
-              <span className="animate-bounce-delay-3">.</span>
-            </span>
-          </div>
-        ) : (
-          <div className="animate-pulse">Welcome </div>
-        )}
-      </div>
+        @keyframes glow {
+          from {
+            text-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+          }
+          to {
+            text-shadow: 0 0 30px rgba(249, 115, 22, 0.8),
+                         0 0 40px rgba(249, 115, 22, 0.3);
+          }
+        }
+
+        @keyframes fade-in-out {
+          0%, 100% { opacity: 0.6; }
+          50% { opacity: 1; }
+        }
+
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-glow {
+          animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .animate-fade-in-out {
+          animation: fade-in-out 2s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };

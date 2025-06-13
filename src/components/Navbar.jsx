@@ -1,121 +1,131 @@
-import clsx from "clsx";
-import gsap from "gsap";
-import { useWindowScroll } from "react-use";
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from 'react';
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
-
-const navItems = ["Home", "About", "Projects", "Technologies", "Contact"];
+const navItems = [
+  { name: "Home", id: "home" },
+  { name: "About", id: "about" },
+  { name: "Work-Experience", id: "internship" },
+  { name: "Projects", id: "projects" },
+  { name: "Technologies", id: "technologies" },
+  { name: "Contact", id: "contact" }
+];
 
 const Navbar = () => {
-  // State for toggling audio and visual indicator
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
-  // Refs for audio and navigation container
-  const audioElementRef = useRef(null);
-  const navContainerRef = useRef(null);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 50);
 
-  const { y: currentScrollY } = useWindowScroll();
-  const [isNavVisible, setIsNavVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  // Toggle audio and visual indicator
-  const toggleAudioIndicator = () => {
-    setIsAudioPlaying((prev) => !prev);
-    setIsIndicatorActive((prev) => !prev);
-  };
-  // Manage audio playback
-  useEffect(() => {
-    if (isAudioPlaying) {
-      audioElementRef.current.play();
-    } else {
-      audioElementRef.current.pause();
-    }
-  }, [isAudioPlaying]);
-  useEffect(() => {
-    if (currentScrollY === 0) {
-      // Topmost position: show navbar without floating-nav
-      setIsNavVisible(true);
-      navContainerRef.current.classList.remove("floating-nav");
-    } else if (currentScrollY > lastScrollY) {
-      // Scrolling down: hide navbar and apply floating-nav
-      setIsNavVisible(false);
-      navContainerRef.current.classList.add("floating-nav");
-    } else if (currentScrollY < lastScrollY) {
-      // Scrolling up: show navbar with floating-nav
-      setIsNavVisible(true);
-      navContainerRef.current.classList.add("floating-nav");
-    }
-    setLastScrollY(currentScrollY);
-  }, [currentScrollY, lastScrollY]);
-  useEffect(() => {
-    gsap.to(navContainerRef.current, {
-      y: isNavVisible ? 0 : -100,
-      opacity: isNavVisible ? 1 : 0,
-      duration: 0.2,
-    });
-  }, [isNavVisible]);
+      // Update active section based on scroll position
+      const sections = navItems.map(item => document.getElementById(item.id));
+      const currentSection = sections.find(section => {
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+
+      if (currentSection) {
+        setActiveSection(currentSection.id);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div
-      ref={navContainerRef}
-      className="fixed inset-x-0 z-50 h-16 transition-all duration-700 border-none top-4 sm:inset-x-6"
+    <nav 
+      className={`fixed top-4 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled 
+          ? 'bg-black/80 backdrop-blur-md shadow-2xl scale-105 mx-8 rounded-[2rem] border border-white/10 clip-path-nav' 
+          : 'bg-transparent mx-0'
+      }`}
     >
-      <header className="absolute w-full -translate-y-1/2 top-1/2">
-        <nav className="flex items-center justify-between p-4 size-full">
-          {/* Logo and Product button */}
-          <div className="flex items-center gap-7">
-          <a href="#home">
-  <img
-    src="/Logo.jpg"
-    alt="Logo"
-    className="object-contain w-10 h-10 rounded-full cursor-pointer"
-  />
-</a>
-  <h1 className="text-2xl font-bold">
-    <span className="text-orange-600">Sayan</span>
-    <span className="text-white">Das</span>
-  </h1>
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex items-center">
+            <a href="/" className="flex items-center space-x-3 group">
+              <img
+                src="/Logo.jpg"
+                alt="Logo"
+                className="object-cover w-10 h-10 transition-transform duration-300 rounded-full group-hover:scale-110"
+              />
+              <h1 className="text-2xl font-bold">
+                <span className="text-orange-600">Sayan </span>
+                <span className="text-white">Das</span>
+              </h1>
+            </a>
           </div>
 
-          {/* Navigation Links and Audio Button */}
-          <div className="flex items-center h-full">
-            <div className="hidden md:block">
-              {navItems.map((item, index) => (
-                <a
-                  key={index}
-                  href={`#${item.toLowerCase()}`}
-                  className="nav-hover-btn"
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
+          {/* Navigation Links */}
+          <div className="items-center hidden space-x-8 md:flex">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`nav-hover-btn relative ${
+                  activeSection === item.id 
+                    ? 'text-orange-500' 
+                    : 'text-gray-300'
+                }`}
+              >
+                {item.name}
+                {activeSection === item.id && (
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-orange-500 transform origin-left transition-transform duration-300 scale-x-100" />
+                )}
+              </a>
+            ))}
+          </div>
 
-            <button
-              onClick={toggleAudioIndicator}
-              className="ml-10 flex items-center space-x-0.5"
-            >
-              <audio
-                ref={audioElementRef}
-                className="hidden"
-                src="/audio/loop.mp3"
-                loop
-              />
-              {[1, 2, 3, 4].map((bar) => (
-                <div
-                  key={bar}
-                  className={clsx("indicator-line", {
-                    active: isIndicatorActive,
-                  })}
-                  style={{
-                    animationDelay: `${bar * 0.1}s`,
-                  }}
-                />
-              ))}
+          {/* Social Links */}
+          <div className="items-center hidden space-x-4 md:flex">
+            {[
+              { icon: <FaEnvelope size={20} />, href: "mailto:offcsayantubecode@gmail.com,sayandas010124@gmail.com" },
+              { icon: <FaGithub size={20} />, href: "https://github.com/sayandas2228056" },
+              { icon: <FaLinkedin size={20} />, href: "https://www.linkedin.com/in/sayan-das-b99810213/" }
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 transition-all duration-300 transform hover:text-orange-500 hover:scale-110 hover:rotate-3"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button className="text-gray-300 transition-transform duration-300 hover:text-orange-500 focus:outline-none hover:scale-110">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
             </button>
           </div>
-        </nav>
-      </header>
-    </div>
+        </div>
+      </div>
+
+      <style>{`
+        .clip-path-nav {
+          clip-path: polygon(
+            2% 0%,
+            98% 0%,
+            100% 50%,
+            98% 100%,
+            2% 100%,
+            0% 50%
+          );
+        }
+      `}</style>
+    </nav>
   );
 };
 

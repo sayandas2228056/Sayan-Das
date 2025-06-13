@@ -7,8 +7,6 @@ import Story from "./components/Story";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import LoadingAnimation from "./components/LoadingAnimation";
-import Internship from "./components/Internship";
-
 function App() {
   const [contentLoaded, setContentLoaded] = useState(false);
 
@@ -29,7 +27,6 @@ function App() {
           <NavBar />
           <Hero />
           <About />
-          <Internship />
           <Features />
           <Story />
           <Contact />

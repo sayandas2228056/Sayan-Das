@@ -35,7 +35,7 @@ const itemVariants = {
 
 const AbtBox = () => {
   return (
-    <>
+    <div>
       {/* Name Heading */}
       <h1 className="text-white special-font hero-heading flex-center">
         <b>A</b>bout <b className='text-orange-600'>Me</b>
@@ -200,7 +200,7 @@ const AbtBox = () => {
           </div>
         </motion.div>
       </BentoTilt>
-    </>
+    </div>
   );
 };
 

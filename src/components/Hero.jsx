@@ -1,13 +1,14 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import { useRef } from "react";
-import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-
+import { useRef, useState } from "react";
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import photo from "../assets/photo.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const heroSectionRef = useRef(null);
+  const [showContactPopup, setShowContactPopup] = useState(false);
 
   useGSAP(() => {
     // Setting up the clip path animation for the hero frame
@@ -38,6 +39,13 @@ const Hero = () => {
     });
   }, []);
 
+  const contactLinks = [
+    { icon: <FaWhatsapp size={24} />, href: "https://wa.me/919876543210", label: "WhatsApp" },
+    { icon: <FaEnvelope size={24} />, href: "mailto:offcsayantubecode@gmail.com,sayandas010124@gmail.com", label: "Email" },
+    { icon: <FaLinkedin size={24} />, href: "https://www.linkedin.com/in/sayan-das-b99810213/", label: "LinkedIn" },
+    { icon: <FaGithub size={24} />, href: "https://github.com/sayandas2228056", label: "GitHub" },
+  ];
+
   return (
     <section id="home" className="relative w-screen overflow-x-hidden h-dvh">
       <div className="relative w-screen overflow-x-hidden h-dvh">
@@ -48,12 +56,12 @@ const Hero = () => {
           style={{ backgroundImage: "url('/img/Xander.jpg')" }}
         >
           <div className="absolute top-0 left-0 z-40 size-full bg-black/50">
-            <div className="flex flex-col items-center gap-8 px-5 mt-24 sm:px-10 lg:flex-row lg:gap-16">
+            <div className="flex flex-col items-center justify-center h-full gap-8 px-5 sm:px-10 lg:flex-row lg:gap-16 lg:justify-between lg:px-20">
               
-              {/* Text Content */}
-              <div>
+              {/* Text Content - Left Side */}
+              <div className="w-full lg:w-1/2">
                 <h2 className="text-lg font-semibold text-gray-300 sm:text-2xl md:text-3xl hero-text-animation">
-                  Hey I'm
+                  Hey I&apos;m
                 </h2>
                 <h1 className="text-blue-100 special-font hero-heading hero-text-animation">
                   S<b>a</b>y<b>a</b>n D<b>a</b>s
@@ -63,7 +71,7 @@ const Hero = () => {
                   <span className="text-orange-400">Cloud Computing</span> & Full Stack Developer
                 </h2>
 
-                <div className="w-full md:w-3/4 lg:w-full hero-text-animation">
+                <div className="w-full hero-text-animation">
                   <p className="text-base leading-relaxed text-gray-300 sm:text-lg md:text-xl">
                     Dedicated technologist with strong expertise in
                     <span className="font-medium text-orange-400"> Java, C++, and C</span>, and a solid foundation in
@@ -89,8 +97,44 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Profile Image (Moved to the right side and increased size) */}
-              
+              {/* Profile Image - Right Side */}
+              <div className="flex items-center justify-center w-full lg:w-1/2">
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 hero-text-animation">
+                  <div 
+                    className="absolute inset-0 overflow-hidden transition-transform duration-300 border-4 rounded-full shadow-2xl cursor-pointer border-orange-500/30 shadow-orange-500/20 hover:scale-105"
+                    onClick={() => setShowContactPopup(!showContactPopup)}
+                  >
+                    <img
+                      src={photo}
+                      alt="Sayan Das"
+                      className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
+                    />
+                  </div>
+                  <div className="absolute inset-0 border-4 rounded-full animate-pulse border-orange-500/20"></div>
+
+                  {/* Contact Popup */}
+                  {showContactPopup && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="absolute inset-0 rounded-full bg-black/80 backdrop-blur-sm"></div>
+                      <div className="relative z-50 flex flex-col items-center gap-4 p-4">
+                        {contactLinks.map((link, index) => (
+                          <a
+                            key={index}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-4 py-2 text-white transition-all duration-300 transform rounded-full bg-orange-500/20 hover:bg-orange-500/40 hover:scale-110"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {link.icon}
+                            <span className="text-sm font-medium">{link.label}</span>
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
 
             </div>
 
