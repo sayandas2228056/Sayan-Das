@@ -57,8 +57,8 @@ const Navbar = () => {
                 className="object-cover w-10 h-10 transition-transform duration-300 rounded-full group-hover:scale-110"
               />
               <h1 className="text-2xl font-bold">
-                <span className="text-orange-600">Sayan </span>
-                <span className="text-white">Das</span>
+                <span className="text-orange-600">SAYAN </span>
+                <span className="text-white">DAS</span>
               </h1>
             </a>
           </div>

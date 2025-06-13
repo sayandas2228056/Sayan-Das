@@ -59,7 +59,7 @@ const Hero = () => {
             <div className="flex flex-col items-center justify-center h-full gap-8 px-5 sm:px-10 lg:flex-row lg:gap-16 lg:justify-between lg:px-20">
               
               {/* Text Content - Left Side */}
-              <div className="w-full lg:w-1/2">
+              <div className="w-full mt-10 lg:w-1/2">
                 <h2 className="text-lg font-semibold text-gray-300 sm:text-2xl md:text-3xl hero-text-animation">
                   Hey I&apos;m
                 </h2>
