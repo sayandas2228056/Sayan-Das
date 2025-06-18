@@ -53,16 +53,16 @@ const expertiseData = [
 
 const Expertise = () => {
   return (
-    <div className="relative row-span-1 md:col-span-1 md:row-span-2">
+    <div className="px-4 mx-auto w-full max-w-7xl sm:px-6 lg:px-8">
       {/* Background Video */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="overflow-hidden absolute inset-0 z-0">
         
         <div className="absolute inset-0 bg-black bg-opacity-10"></div>
       </div>
       
-      <div className="relative z-10 overflow-hidden border border-orange-600 shadow-lg rounded-xl backdrop-blur-sm">
-        <section className="px-4 py-16 text-white sm:px-6 md:px-10 lg:px-16 xl:px-20">
-          <div className="max-w-6xl mx-auto">
+      <div className="overflow-hidden relative z-10 rounded-xl border border-orange-600 shadow-lg backdrop-blur-sm">
+        <section className="px-4 py-16 text-white sm:px-6 md:px-8">
+          <div className="mx-auto">
             {expertiseData.map((category, categoryIndex) => (
               <div key={categoryIndex} className="mb-12">
                 <h3 className="pb-2 mb-6 text-xl font-semibold text-orange-500 border-b border-orange-800 sm:text-2xl">
@@ -71,8 +71,8 @@ const Expertise = () => {
 
                 {category.skills.map((item, index) => (
                   <BentoTilt key={index}>
-                    <div className="p-5 mb-8 transition-all duration-300 border border-gray-800 rounded-lg shadow-lg bg-opacity-30 backdrop-blur-sm sm:p-6 hover:shadow-orange-900/20">
-                      <div className="flex flex-wrap items-center gap-2 mb-2 sm:gap-4">
+                    <div className="p-5 mb-8 bg-opacity-30 rounded-lg border border-gray-800 shadow-lg backdrop-blur-sm transition-all duration-300 sm:p-6 hover:shadow-orange-900/20">
+                      <div className="flex flex-wrap gap-2 items-center mb-2 sm:gap-4">
                         <span className="text-lg text-orange-500 sm:text-xl">{item.icon}</span>
                         <span className="text-base font-semibold text-gray-200 sm:text-lg">{item.skill}</span>
                         <span className="ml-auto text-sm font-semibold text-orange-500 sm:text-base">
@@ -82,7 +82,7 @@ const Expertise = () => {
 
                       <p className="mb-3 text-sm text-gray-400">{item.description}</p>
 
-                      <div className="relative w-full h-3 overflow-hidden bg-gray-800 rounded-full">
+                      <div className="overflow-hidden relative w-full h-3 bg-gray-800 rounded-full">
                         <div
                           className="absolute top-0 left-0 h-full rounded-full"
                           style={{
@@ -98,13 +98,13 @@ const Expertise = () => {
             ))}
 
             <BentoTilt>
-              <div className="p-5 mt-12 bg-black border border-orange-800 rounded-lg sm:p-6 bg-opacity-30 backdrop-blur-sm">
+              <div className="p-5 mt-12 bg-black bg-opacity-30 rounded-lg border border-orange-800 backdrop-blur-sm sm:p-6">
                 <h3 className="mb-3 text-lg font-semibold text-orange-500 sm:text-xl">Currently Learning</h3>
                 <div className="flex flex-wrap gap-2 sm:gap-3">
                   {["AWS Cloud", "App Development", "ReactNative", "Advanced Data Structures"].map((item, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 text-xs text-orange-200 bg-orange-900 rounded-full bg-opacity-40 sm:text-sm"
+                      className="px-3 py-1 text-xs text-orange-200 bg-orange-900 bg-opacity-40 rounded-full sm:text-sm"
                     >
                       {item}
                     </span>

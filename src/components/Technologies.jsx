@@ -5,7 +5,7 @@ import { FaNodeJs } from "react-icons/fa";
 import { BentoTilt } from "./Features";
 
 const techStack = [
-  { icon: <RiReactjsLine className="text-6xl sm:text-7xl text-cyan-400" />, name: "React.js", link: "https://react.dev/" },
+  { icon: <RiReactjsLine className="text-6xl text-cyan-400 sm:text-7xl" />, name: "React.js", link: "https://react.dev/" },
   { icon: <SiMongodb className="text-6xl text-green-400 sm:text-7xl" />, name: "MongoDB", link: "https://www.mongodb.com/" },
   { icon: <SiJavascript className="text-6xl text-yellow-400 sm:text-7xl" />, name: "JavaScript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
   { icon: <FaNodeJs className="text-6xl text-green-500 sm:text-7xl" />, name: "Node.js", link: "https://nodejs.org/" },
@@ -58,8 +58,8 @@ const TechCategory = ({ title, technologies }) => (
 
 const Technologies = () => {
   return (
-    <section className="px-4 py-16 text-white sm:px-6">
-      <div className="mx-auto max-w-7xl">
+    <section className="px-4 mx-auto w-full max-w-7xl sm:px-6 lg:px-8">
+      <div className="mx-auto">
         {/* New Heading */}
         <h1 className="text-white special-font hero-heading flex-center">
           <b>Technical </b> <b className="text-orange-600">Expertise</b>

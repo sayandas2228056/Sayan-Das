@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import Logo from "../assets/Logo.jpg";
-
+import photo from "../assets/XanderC.jpg";
 const LoadingAnimation = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setProgress((prev) => Math.min(prev + Math.random() * 3 + 1, 100));
-    }, 50);
+      setProgress((prev) => Math.min(prev + Math.random() * 5 + 2, 100));
+    }, 30);
 
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearInterval(interval);
@@ -24,6 +24,16 @@ const LoadingAnimation = () => {
 
   return (
     <div className="flex overflow-hidden fixed inset-0 z-50 justify-center items-center bg-gradient-to-br from-black via-gray-900 to-black">
+      {/* Background Image with blur and dark overlay */}
+      <div className="absolute inset-0">
+        <img
+          src={photo}
+          alt="Background"
+          className="object-cover w-full h-full opacity-20 filter blur-xl"
+        />
+        <div className="absolute inset-0 bg-black/10"></div>
+      </div>
+
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500/20 via-transparent to-transparent animate-pulse"></div>

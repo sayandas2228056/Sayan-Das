@@ -1,12 +1,8 @@
 import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
-import { FaGraduationCap } from "react-icons/fa";
 import Technologies from "./Technologies";
 import AbtBox from "./AbtBox";
-import Projects from "./Projects";
 import React from "react"; 
-import { motion } from "framer-motion";
-import { FaCode, FaServer, FaCloud, FaLaptopCode, FaChartLine, FaBrain } from "react-icons/fa";
 import Expertise from "./Expertise"
 import Internship from "./Internship"
 import LiveProject from "./LiveProject"
@@ -109,24 +105,35 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 const Features = () => (
-    <section className="pb-52 bg-black">
-      <div className="container px-3 mx-auto md:px-10">
-        <div className="container px-3 mx-auto md:px-10">
-          <div className="px-5 py-32">
-           <AbtBox/>
-          </div>
-        </div>
+    <section className="w-full bg-black">
+      {/* About Section */}
+      <div className="py-16 w-full md:py-24">
+        <AbtBox/>
+      </div>
+      
+      {/* Live Projects Section */}
+      <div className="w-full">
         <LiveProject/>
+      </div>
+      
+      {/* Internship Section */}
+      <div className="w-full">
         <Internship/>
-        <Projects/>
-  
-        <h1 className="text-white special-font hero-heading flex-center">
-        <b>My</b> <b className='text-orange-600'>Expertise</b>
-      </h1>
+      </div>
+      
+      {/* Expertise Section */}
+      <div className="py-16 w-full md:py-24">
+        <h1 className="mb-8 text-white special-font hero-heading flex-center">
+          <b>My</b> <b className='text-orange-600'>Expertise</b>
+        </h1>
         <Expertise src="videos/feature-3.mp4" />
+      </div>
+      
+      {/* Technologies Section */}
+      <div className="py-16 w-full md:py-24">
         <Technologies/>
-    </div>
-  </section>
+      </div>
+    </section>
 );
 
 export default Features;
