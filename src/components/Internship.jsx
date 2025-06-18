@@ -11,7 +11,7 @@ const LinkPreview = ({ url, title }) => {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 text-gray-300 transition-colors hover:text-orange-400"
+        className="flex gap-2 items-center text-gray-300 transition-colors hover:text-orange-400"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -20,8 +20,8 @@ const LinkPreview = ({ url, title }) => {
       </a>
       
       {isHovered && (
-        <div className="absolute left-0 z-50 w-64 p-2 mt-2 transition-all duration-300 ease-in-out transform bg-gray-900 border border-orange-500 rounded-lg shadow-lg">
-          <div className="relative w-full h-32 overflow-hidden rounded-md">
+        <div className="absolute left-0 z-50 p-2 mt-2 w-64 bg-gray-900 rounded-lg border border-orange-500 shadow-lg transition-all duration-300 ease-in-out transform">
+          <div className="overflow-hidden relative w-full h-32 rounded-md">
             <img
               src={`https://api.microlink.io/?url=${url}&screenshot=true&meta=false&embed=screenshot.url`}
               alt={`Preview of ${title}`}
@@ -43,16 +43,16 @@ const LinkPreview = ({ url, title }) => {
 
 const Internship = () => {
   return (
-    <div id="internship" className="w-screen bg-black min-h-dvh text-blue-50">
+    <div id="internship" className="w-screen text-blue-50 bg-black min-h-dvh">
       <div className="flex flex-col items-center py-10 pb-24 size-full">
         <h1 className="text-white special-font hero-heading flex-center">
           <b>Intern</b> <b className="text-orange-600">ship</b>
         </h1>
 
-        <div className="w-full max-w-6xl px-4 mx-auto mt-8">
+        <div className="px-4 mx-auto mt-8 w-full max-w-6xl">
           <BentoTilt>
-            <section className="p-6 bg-black border border-gray-800 rounded-lg bg-opacity-30 backdrop-blur-sm">
-              <div className="flex items-center justify-between mb-4">
+            <section className="p-6 bg-black bg-opacity-30 rounded-lg border border-gray-800 backdrop-blur-sm">
+              <div className="flex justify-between items-center mb-4">
                 <div>
                   <h2 className="text-2xl font-bold text-orange-500">Cloud Computing & Full Stack Developer Intern</h2>
                   <p className="text-gray-300">Zenitech Solutions</p>
@@ -62,7 +62,7 @@ const Internship = () => {
                   href="http://linkedin.com/in/sayan-das-b99810213/details/experience/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-orange-500 transition-colors rounded-full hover:bg-orange-500/10"
+                  className="p-2 text-orange-500 rounded-full transition-colors hover:bg-orange-500/10"
                 >
                   <FaLinkedin size={24} />
                 </a>
@@ -70,7 +70,7 @@ const Internship = () => {
 
               <div className="grid gap-6 mt-8 sm:grid-cols-2">
                 <div className="p-4 rounded-lg bg-gray-800/30">
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex gap-3 items-center mb-3">
                     <FaCode className="text-xl text-orange-500" />
                     <h3 className="text-lg font-semibold text-white">Full Stack Development</h3>
                   </div>
@@ -88,7 +88,7 @@ const Internship = () => {
                 </div>
 
                 <div className="p-4 rounded-lg bg-gray-800/30">
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex gap-3 items-center mb-3">
                     <FaCloud className="text-xl text-orange-500" />
                     <h3 className="text-lg font-semibold text-white">Cloud Computing (AWS)</h3>
                   </div>
@@ -99,7 +99,7 @@ const Internship = () => {
                 </div>
 
                 <div className="p-4 rounded-lg bg-gray-800/30">
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex gap-3 items-center mb-3">
                     <FaTools className="text-xl text-orange-500" />
                     <h3 className="text-lg font-semibold text-white">DevOps & Deployment</h3>
                   </div>
@@ -109,7 +109,7 @@ const Internship = () => {
                 </div>
 
                 <div className="p-4 rounded-lg bg-gray-800/30">
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex gap-3 items-center mb-3">
                     <FaUsers className="text-xl text-orange-500" />
                     <h3 className="text-lg font-semibold text-white">Team Collaboration</h3>
                   </div>
@@ -138,7 +138,7 @@ const Internship = () => {
                   ].map((skill, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 text-sm text-orange-200 bg-orange-900 rounded-full bg-opacity-40"
+                      className="px-3 py-1 text-sm text-orange-200 bg-orange-900 bg-opacity-40 rounded-full"
                     >
                       {skill}
                     </span>

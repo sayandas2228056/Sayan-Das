@@ -7,6 +7,7 @@ const navItems = [
   { name: "Work-Experience", id: "internship" },
   { name: "Projects", id: "projects" },
   { name: "Technologies", id: "technologies" },
+  { name: "Resume", id: "resume" },
   { name: "Contact", id: "contact" }
 ];
 
@@ -42,19 +43,19 @@ const Navbar = () => {
     <nav 
       className={`fixed top-4 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled 
-          ? 'bg-black/80 backdrop-blur-md shadow-2xl scale-105 mx-8 rounded-[2rem] border border-white/10 clip-path-nav' 
-          : 'bg-transparent mx-0'
+          ? 'mx-8 border shadow-2xl backdrop-blur-md scale-105 bg-black/80 rounded-[2rem] border-white/10 clip-path-nav' 
+          : 'mx-0 bg-transparent'
       }`}
     >
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center">
             <a href="/" className="flex items-center space-x-3 group">
               <img
                 src="/Logo.jpg"
                 alt="Logo"
-                className="object-cover w-10 h-10 transition-transform duration-300 rounded-full group-hover:scale-110"
+                className="object-cover w-10 h-10 rounded-full transition-transform duration-300 group-hover:scale-110"
               />
               <h1 className="text-2xl font-bold">
                 <span className="text-orange-600">SAYAN </span>
@@ -64,7 +65,7 @@ const Navbar = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="items-center hidden space-x-8 md:flex">
+          <div className="hidden items-center space-x-8 md:flex">
             {navItems.map((item) => (
               <a
                 key={item.id}
@@ -84,7 +85,7 @@ const Navbar = () => {
           </div>
 
           {/* Social Links */}
-          <div className="items-center hidden space-x-4 md:flex">
+          <div className="hidden items-center space-x-4 md:flex">
             {[
               { icon: <FaEnvelope size={20} />, href: "mailto:offcsayantubecode@gmail.com,sayandas010124@gmail.com" },
               { icon: <FaGithub size={20} />, href: "https://github.com/sayandas2228056" },

@@ -2,38 +2,51 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 import { useRef, useState, useEffect } from "react";
-import { FaFacebook, FaGithub, FaInstagram, FaLinkedin, FaWhatsapp, FaEnvelope } from "react-icons/fa";
+import { FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import photo from "../assets/photo.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const heroSectionRef = useRef(null);
-  const [showContactPopup, setShowContactPopup] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
-  // Preload the background image
+  // Optimized image preloading with timeout
   useEffect(() => {
-    const img = new Image();
-    img.src = "/img/Xander.jpg";
+    const img = new window.Image();
+    const timeoutId = setTimeout(() => {
+      setImageLoaded(true); // Fallback if image takes too long
+    }, 2000);
     
+    img.src = "/img/Xander.jpg";
     img.onload = () => {
+      clearTimeout(timeoutId);
       setImageLoaded(true);
     };
-    
     img.onerror = () => {
+      clearTimeout(timeoutId);
       setImageError(true);
-      console.error("Failed to load background image");
+      setImageLoaded(true); // Still set loaded to show fallback
     };
   }, []);
 
+  // Helper: responsive background image
+  const getBgImage = () => {
+    if (imageError) return '/img/fallback-bg.jpg';
+    return '/img/Xander.jpg';
+  };
+
   useGSAP(() => {
-    // Setting up the clip path animation for the hero frame
+    // Only animate on medium+ screens for performance
+    if (window.innerWidth < 640) return;
+    
+    // Simplified clip-path animation with reduced complexity
     gsap.set("#hero-frame", {
       clipPath: "polygon(14% 0, 72% 0, 88% 90%, 0 95%)",
       borderRadius: "0% 0% 40% 10%",
     });
-
+    
+    // Optimized scroll trigger with reduced scrub complexity
     gsap.from("#hero-frame", {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
       borderRadius: "0% 0% 0% 0%",
@@ -42,96 +55,84 @@ const Hero = () => {
         trigger: "#hero-frame",
         start: "center center",
         end: "bottom center",
-        scrub: true,
+        scrub: 0.5, // Reduced scrub for better performance
       },
     });
-
-    // Animate the text elements
+    
+    // Simplified text animation without stagger for faster loading
     gsap.from(".hero-text-animation", {
-      y: 50,
+      y: 30, // Reduced distance
       opacity: 0,
-      stagger: 0.2,
-      duration: 1,
+      duration: 0.6, // Faster duration
       ease: "power2.out",
+      delay: 0.1, // Minimal delay
     });
   }, []);
 
-  const contactLinks = [
-    { icon: <FaWhatsapp size={24} />, href: "https://wa.me/919876543210", label: "WhatsApp" },
-    { icon: <FaEnvelope size={24} />, href: "mailto:offcsayantubecode@gmail.com,sayandas010124@gmail.com", label: "Email" },
-    { icon: <FaLinkedin size={24} />, href: "https://www.linkedin.com/in/sayan-das-b99810213/", label: "LinkedIn" },
-    { icon: <FaGithub size={24} />, href: "https://github.com/sayandas2228056", label: "GitHub" },
-  ];
-
   return (
-    <section id="home" className="relative w-screen overflow-x-hidden h-dvh">
-      <div className="relative w-screen overflow-x-hidden h-dvh">
+    <section id="home" className="overflow-x-hidden relative w-screen h-dvh">
+      <div className="overflow-x-hidden relative w-screen h-dvh">
         <div
           id="hero-frame"
           ref={heroSectionRef}
-          className="relative z-10 w-screen overflow-hidden bg-black bg-center bg-cover rounded-lg h-dvh"
+          className="overflow-hidden relative z-10 w-screen bg-black bg-center bg-cover rounded-lg h-dvh"
         >
-          {/* Background Image with Blur-up Loading */}
-          <div 
-            className={`absolute inset-0 transition-all duration-1000 ${
-              imageLoaded ? 'opacity-100 blur-0' : 'opacity-0 blur-xl'
-            }`}
+          {/* Optimized Background Image with faster transitions */}
+          <div
+            className={`absolute inset-0 transition-all duration-500 ${imageLoaded ? 'opacity-100 blur-0' : 'opacity-0 blur-lg'}`}
             style={{
-              backgroundImage: `url(${imageError ? '/img/fallback-bg.jpg' : '/img/Xander.jpg'})`,
+              backgroundImage: `url(${getBgImage()})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
+            aria-label="Background image of Sayan Das on a motorcycle at sunset"
+            role="img"
           />
-          
-          {/* Low-quality placeholder */}
-          <div 
-            className={`absolute inset-0 transition-all duration-1000 ${
-              imageLoaded ? 'opacity-0' : 'opacity-100'
-            }`}
+          {/* Simplified placeholder */}
+          <div
+            className={`absolute inset-0 transition-all duration-500 ${imageLoaded ? 'opacity-0' : 'opacity-100'}`}
             style={{
-              backgroundImage: `url(${imageError ? '/img/fallback-bg.jpg' : '/img/Xander.jpg'})`,
+              backgroundImage: `url(${getBgImage()})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              filter: 'blur(20px)',
-              transform: 'scale(1.1)',
+              filter: 'blur(10px)', // Reduced blur
+              transform: 'scale(1.05)', // Reduced scale
             }}
+            aria-hidden="true"
           />
 
           <div className="absolute top-0 left-0 z-40 size-full bg-black/50">
-            <div className="flex flex-col items-center justify-center h-full gap-8 px-5 sm:px-10 lg:flex-row lg:gap-16 lg:justify-between lg:px-20">
+            <div className="flex flex-col gap-8 justify-center items-center px-5 h-full sm:px-10 lg:flex-row lg:gap-16 lg:justify-between lg:px-20">
               
               {/* Text Content - Left Side */}
-              <div className="w-full mt-10 lg:w-1/2">
-                <h2 className="text-lg font-semibold text-gray-300 sm:text-2xl md:text-3xl hero-text-animation">
+              <div className="mt-6 w-full max-w-xl sm:mt-10 lg:w-1/2">
+                <h2 className="text-base font-semibold text-gray-300 sm:text-lg md:text-2xl hero-text-animation">
                   Hey I&apos;m
                 </h2>
-                <h1 className="text-blue-100 special-font hero-heading hero-text-animation">
+                <h1 className="text-5xl leading-none text-blue-100 special-font hero-heading hero-text-animation sm:text-7xl md:text-8xl lg:text-9xl">
                   S<b>a</b>y<b>a</b>n D<b>a</b>s
                 </h1>
-
-                <h2 className="text-lg font-semibold text-gray-300 sm:text-2xl md:text-3xl hero-text-animation">
+                <h2 className="mt-2 text-base font-semibold text-gray-300 sm:text-lg md:text-2xl hero-text-animation">
                   <span className="text-orange-400">Cloud Computing</span> & Full Stack Developer
                 </h2>
-
-                <div className="w-full hero-text-animation">
-                  <p className="text-base leading-relaxed text-gray-300 sm:text-lg md:text-xl">
+                <div className="mt-2 w-full hero-text-animation sm:mt-4">
+                  <p className="text-sm leading-relaxed text-gray-300 sm:text-base md:text-lg">
                     Dedicated technologist with strong expertise in
                     <span className="font-medium text-orange-400"> Java, C++, and C</span>, and a solid foundation in
                     <span className="font-medium text-orange-400"> Data Structures & Algorithms</span>. Proven experience in
                     <span className="font-medium text-orange-400"> Full Stack Web Development</span> and
                     <span className="font-medium text-orange-400"> Cloud-Native Solutions</span>, delivering scalable and high-performance applications.
                   </p>
-
-                  <div className="flex gap-4 mt-4">
+                  <div className="flex flex-col gap-3 mt-4 sm:flex-row sm:gap-4">
                     <a
                       href="#contact"
-                      className="px-6 py-3 font-semibold text-white transition-all duration-300 transform bg-orange-600 rounded-lg sm:px-8 hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1"
+                      className="px-5 py-2 font-semibold text-center text-white bg-orange-600 rounded-lg transition-all duration-200 transform sm:px-6 sm:py-3 hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1"
                     >
                       Hire Me
                     </a>
                     <a
                       href="#projects"
-                      className="px-6 py-3 font-semibold text-orange-600 transition-all duration-300 transform bg-transparent border-2 border-orange-500 rounded-lg sm:px-8 hover:bg-orange-500/10 hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-1"
+                      className="px-5 py-2 font-semibold text-center text-orange-600 bg-transparent rounded-lg border-2 border-orange-500 transition-all duration-200 transform sm:px-6 sm:py-3 hover:bg-orange-500/10 hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-1"
                     >
                       View Portfolio
                     </a>
@@ -140,54 +141,31 @@ const Hero = () => {
               </div>
 
               {/* Profile Image - Right Side */}
-              <div className="flex items-center justify-center w-full lg:w-1/2">
-                <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 hero-text-animation">
-                  <div 
-                    className="absolute inset-0 overflow-hidden transition-transform duration-300 border-4 rounded-full shadow-2xl cursor-pointer border-orange-500/30 shadow-orange-500/20 hover:scale-105"
-                    onClick={() => setShowContactPopup(!showContactPopup)}
+              <div className="flex justify-center items-center mt-8 w-full lg:w-1/2 lg:mt-0">
+                <div className="relative w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80 hero-text-animation">
+                  <div
+                    className="overflow-hidden absolute inset-0 rounded-full border-4 shadow-2xl transition-transform duration-200 cursor-pointer border-orange-500/30 shadow-orange-500/20 hover:scale-105 bg-black/10"
                   >
                     <img
                       src={photo}
-                      alt="Sayan Das"
-                      className="object-cover w-full h-full transition-transform duration-500 hover:scale-110"
-                      loading="eager"
+                      alt="Sayan Das profile portrait"
+                      className="object-cover w-full h-full rounded-full transition-transform duration-300 hover:scale-110"
+                      loading="eager" // Changed to eager for faster loading
                     />
                   </div>
-                  <div className="absolute inset-0 border-4 rounded-full animate-pulse border-orange-500/20"></div>
-
-                  {/* Contact Popup */}
-                  {showContactPopup && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="absolute inset-0 rounded-full bg-black/80 backdrop-blur-sm"></div>
-                      <div className="relative z-50 flex flex-col items-center gap-4 p-4">
-                        {contactLinks.map((link, index) => (
-                          <a
-                            key={index}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 text-white transition-all duration-300 transform rounded-full bg-orange-500/20 hover:bg-orange-500/40 hover:scale-110"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            {link.icon}
-                            <span className="text-sm font-medium">{link.label}</span>
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <div className="absolute inset-0 rounded-full border-4 animate-pulse pointer-events-none border-orange-500/20"></div>
                 </div>
               </div>
 
             </div>
 
             {/* Social Icons */}
-            <div className="absolute flex gap-6 text-2xl text-gray-400 transform -translate-x-1/2 bottom-5 left-1/2">
+            <div className="flex absolute bottom-5 left-1/2 gap-4 text-xl text-gray-400 transform -translate-x-1/2 sm:gap-6 sm:text-2xl">
               <a
                 href="https://www.instagram.com/__sdx__007/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-orange-500"
+                className="transition-colors duration-200 hover:text-orange-500"
                 aria-label="Instagram"
               >
                 <FaInstagram />
@@ -196,7 +174,7 @@ const Hero = () => {
                 href="https://www.facebook.com/offcsayantubecode"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-orange-500"
+                className="transition-colors duration-200 hover:text-orange-500"
                 aria-label="Facebook"
               >
                 <FaFacebook />
@@ -205,7 +183,7 @@ const Hero = () => {
                 href="https://github.com/sayandas2228056"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-orange-500"
+                className="transition-colors duration-200 hover:text-orange-500"
                 aria-label="GitHub"
               >
                 <FaGithub />
@@ -214,7 +192,7 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/sayan-das-b99810213/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors hover:text-orange-500"
+                className="transition-colors duration-200 hover:text-orange-500"
                 aria-label="LinkedIn"
               >
                 <FaLinkedin />

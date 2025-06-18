@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaGithub, FaCheckCircle, FaSpinner, FaExternalLinkAlt } from 'react-icons/fa';
 import { BentoTilt } from './Features';
-import { desc } from 'framer-motion/client';
 
 const projects = [
   {
@@ -22,8 +21,9 @@ const projects = [
     title: 'InteliView - Ai Based Interview Preparator',
     description: 'A job portal that connects employers and job seekers, allowing resume uploads and job postings.',
     technologies: 'Node.js, React.js, Express.js, MongoDB, GeminiAPI',
-    status: 'Work in Progress',
+    status: 'Completed',
     repo: 'https://github.com/sayandas2228056/InteliView',
+    link:'https://inteli-view.vercel.app/'
   },
   {
     title:'Zenitech Solutions Website',
@@ -80,21 +80,32 @@ const projects = [
 
 const Projects = () => {
   const [filter, setFilter] = useState('All');
+  const [showAll, setShowAll] = useState(false);
 
   const filteredProjects =
     filter === 'All'
       ? [...projects]
       : projects.filter((p) => p.status === filter);
 
+  // Sort projects: completed first, then work in progress
+  const sortedProjects = [...filteredProjects].sort((a, b) => {
+    if (a.status === 'Completed' && b.status !== 'Completed') return -1;
+    if (a.status !== 'Completed' && b.status === 'Completed') return 1;
+    return 0;
+  });
+
+  // Show limited or all projects based on state
+  const visibleProjects = showAll ? sortedProjects : sortedProjects.slice(0, 6);
+
   return (
-    <div id="projects">
+    <div >
       {/* Heading */}
       <h1 className="text-white special-font hero-heading flex-center">
-        <b>P</b>ortfolio <b className="text-orange-600">Projects</b>
+        <b>P</b>roject <b className="text-orange-600">works</b>
       </h1>
 
       {/* Filter Buttons */}
-      <div className="flex justify-center gap-4 my-6">
+      <div className="flex gap-4 justify-center my-6">
         {['All', 'Completed', 'Work in Progress'].map((status) => (
           <button
             key={status}
@@ -112,14 +123,14 @@ const Projects = () => {
 
       {/* Grid */}
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {filteredProjects.map((project, idx) => (
+        {visibleProjects.map((project, idx) => (
           <BentoTilt key={idx}>
-            <section className="p-4 bg-black border border-gray-800 rounded-lg bg-opacity-30 backdrop-blur-sm sm:p-6">
-              <div className="flex items-center justify-between mb-3">
+            <section className="p-4 bg-black bg-opacity-30 rounded-lg border border-gray-800 backdrop-blur-sm sm:p-6">
+              <div className="flex justify-between items-center mb-3">
                 <h3 className="text-lg font-semibold text-white sm:text-xl">
                   {project.title}
                 </h3>
-                <div className="flex items-center gap-3">
+                <div className="flex gap-3 items-center">
                   {project.link && (
                     <a
                       href={project.link}
@@ -169,6 +180,28 @@ const Projects = () => {
           </BentoTilt>
         ))}
       </div>
+
+      {/* Show More / Show Less buttons */}
+      {!showAll && sortedProjects.length > 6 && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => setShowAll(true)}
+            className="px-6 py-3 font-semibold text-white bg-orange-600 rounded-lg shadow-lg transition-colors hover:bg-orange-700"
+          >
+            Show More
+          </button>
+        </div>
+      )}
+      {showAll && sortedProjects.length > 6 && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => setShowAll(false)}
+            className="px-6 py-3 font-semibold text-white bg-gray-700 rounded-lg shadow-lg transition-colors hover:bg-gray-800"
+          >
+            Show Less
+          </button>
+        </div>
+      )}
     </div>
   );
 };

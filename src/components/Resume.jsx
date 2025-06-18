@@ -40,8 +40,8 @@ const Resume = () => {
         {/* Section header */}
         <motion.div className="mb-16 text-center" variants={itemVariants}>
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl">My Resume</h2>
-          <div className="w-20 h-1 mx-auto mb-6 bg-orange-600"></div>
-          <p className="max-w-3xl mx-auto text-base text-gray-300 sm:text-lg">
+          <div className="mx-auto mb-6 w-20 h-1 bg-orange-600"></div>
+          <p className="mx-auto max-w-3xl text-base text-gray-300 sm:text-lg">
             A summary of my educational background, technical skills, achievements, and professional certifications.
           </p>
         </motion.div>
@@ -49,10 +49,10 @@ const Resume = () => {
         {/* Resume Download Button */}
         <motion.div className="mb-16 text-center" variants={itemVariants}>
           <a
-            href="https://drive.google.com/file/d/15Iqsig44uLrAzZYrYAcgs0yHOX8Rdoyy/view?usp=drivesdk"
+            href="https://drive.google.com/file/d/13G9jrJY7AnTTE4BNYEKMmMzerJsLXhzv/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 text-base font-medium text-white transition-all duration-300 transform rounded-lg group sm:px-8 sm:py-4 bg-gradient-to-r from-orange-600 to-orange-500 sm:text-lg hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1"
+            className="inline-flex gap-2 items-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-orange-600 to-orange-500 rounded-lg transition-all duration-300 transform group sm:px-8 sm:py-4 sm:text-lg hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1"
           >
             <span>Download Resume</span>
             <FaDownload className="group-hover:animate-bounce" />
@@ -69,14 +69,14 @@ const Resume = () => {
         >
           <motion.div className="mb-6 text-center sm:mb-12" variants={itemVariants}>
             <h2 className="mb-2 text-2xl font-bold sm:text-3xl sm:mb-4">Resume Highlights</h2>
-            <div className="w-16 h-1 mx-auto mb-2 bg-orange-600 sm:w-20 sm:mb-4"></div>
+            <div className="mx-auto mb-2 w-16 h-1 bg-orange-600 sm:w-20 sm:mb-4"></div>
           </motion.div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 sm:gap-8">
             {/* Achievements Section */}
             <motion.div variants={itemVariants}>
-              <div className="h-full overflow-hidden transition-all duration-300 border border-gray-700 shadow-xl bg-gray-800/30 backdrop-blur-md rounded-xl hover:shadow-orange-500/20">
-                <div className="flex items-center gap-2 px-4 py-3 bg-orange-800/70 sm:py-4 sm:px-6 sm:gap-3">
+              <div className="overflow-hidden h-full rounded-xl border border-gray-700 shadow-xl backdrop-blur-md transition-all duration-300 bg-gray-800/30 hover:shadow-orange-500/20">
+                <div className="flex gap-2 items-center px-4 py-3 bg-orange-800/70 sm:py-4 sm:px-6 sm:gap-3">
                   <FaTrophy className="text-xl text-orange-300 sm:text-2xl" />
                   <h3 className="text-lg font-bold text-white sm:text-xl">Achievements</h3>
                 </div>
@@ -105,7 +105,7 @@ const Resume = () => {
                       desc: "KIIT-Fest 7.0",
                     },
                   ].map((ach, index) => (
-                    <div key={index} className="flex items-start gap-2 p-2 transition-colors rounded-lg sm:gap-3 sm:p-3 hover:bg-gray-700/30">
+                    <div key={index} className="flex gap-2 items-start p-2 rounded-lg transition-colors sm:gap-3 sm:p-3 hover:bg-gray-700/30">
                       <div className="flex-shrink-0 text-base font-bold text-orange-400 sm:text-lg">{ach.icon}</div>
                       <div>
                         <h4 className="text-sm font-semibold text-white sm:text-base">{ach.title}</h4>
@@ -114,7 +114,7 @@ const Resume = () => {
                             href={ach.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 text-xs text-orange-400 sm:text-sm hover:underline"
+                            className="inline-flex gap-1 items-center text-xs text-orange-400 sm:text-sm hover:underline"
                           >
                             {ach.desc} <span className="text-xs">↗</span>
                           </a>
@@ -130,8 +130,8 @@ const Resume = () => {
 
             {/* Certifications Section */}
             <motion.div variants={itemVariants}>
-              <div className="h-full overflow-hidden transition-all duration-300 border border-gray-700 shadow-xl bg-gray-800/30 backdrop-blur-md rounded-xl hover:shadow-orange-500/20">
-                <div className="flex items-center gap-2 px-4 py-3 bg-orange-800/70 sm:py-4 sm:px-6 sm:gap-3">
+              <div className="overflow-hidden h-full rounded-xl border border-gray-700 shadow-xl backdrop-blur-md transition-all duration-300 bg-gray-800/30 hover:shadow-orange-500/20">
+                <div className="flex gap-2 items-center px-4 py-3 bg-orange-800/70 sm:py-4 sm:px-6 sm:gap-3">
                   <FaCertificate className="text-xl text-orange-300 sm:text-2xl" />
                   <h3 className="text-lg font-bold text-white sm:text-xl">Certifications</h3>
                 </div>
@@ -168,7 +168,7 @@ const Resume = () => {
                       icon: "☕",
                     },
                   ].map((cert, index) => (
-                    <div key={index} className="flex items-start gap-2 p-2 transition-colors rounded-lg sm:gap-3 sm:p-3 hover:bg-gray-700/30">
+                    <div key={index} className="flex gap-2 items-start p-2 rounded-lg transition-colors sm:gap-3 sm:p-3 hover:bg-gray-700/30">
                       <div className="flex-shrink-0 text-base font-bold text-orange-400 sm:text-lg">{cert.icon}</div>
                       <div>
                         <h4 className="text-sm font-semibold text-white sm:text-base">{cert.name}</h4>
@@ -177,7 +177,7 @@ const Resume = () => {
                           href={cert.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs text-orange-400 sm:text-sm hover:underline"
+                          className="inline-flex gap-1 items-center text-xs text-orange-400 sm:text-sm hover:underline"
                         >
                           View Certificate <span className="text-xs">↗</span>
                         </a>

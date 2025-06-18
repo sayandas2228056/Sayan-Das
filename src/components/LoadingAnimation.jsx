@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Logo from "../assets/Logo.jpg";
 
 const LoadingAnimation = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,7 +23,7 @@ const LoadingAnimation = () => {
   if (!isLoading) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
+    <div className="flex overflow-hidden fixed inset-0 z-50 justify-center items-center bg-gradient-to-br from-black via-gray-900 to-black">
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-orange-500/20 via-transparent to-transparent animate-pulse"></div>
@@ -46,10 +47,14 @@ const LoadingAnimation = () => {
       <div className="relative z-10 text-center">
         {/* Logo and Name */}
         <div className="flex flex-col items-center mb-8">
-          <div className="relative w-24 h-24 mb-4 animate-float-slow">
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500 to-orange-600 animate-pulse"></div>
-            <div className="absolute inset-2 rounded-full bg-black flex items-center justify-center">
-              <span className="text-4xl font-bold text-orange-500">SD</span>
+          <div className="relative mb-4 w-24 h-24 animate-float-slow">
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full animate-pulse"></div>
+            <div className="flex absolute inset-2 justify-center items-center bg-black rounded-full">
+              <img 
+                src={Logo} 
+                alt="Sayan Das Logo" 
+                className="object-cover w-16 h-16 rounded-full"
+              />
             </div>
             <div className="absolute inset-0 rounded-full border-2 border-orange-500/30 animate-spin-slow"></div>
           </div>
@@ -64,15 +69,15 @@ const LoadingAnimation = () => {
         </div>
 
         {/* Spinner */}
-        <div className="relative w-16 h-16 mx-auto mb-8">
-          <div className="absolute inset-0 border-4 rounded-full border-orange-500/30 border-t-orange-500 animate-spin"></div>
-          <div className="absolute inset-2 border-4 rounded-full border-orange-400/20 border-t-orange-400 animate-spin-reverse"></div>
+        <div className="relative mx-auto mb-8 w-16 h-16">
+          <div className="absolute inset-0 rounded-full border-4 animate-spin border-orange-500/30 border-t-orange-500"></div>
+          <div className="absolute inset-2 rounded-full border-4 border-orange-400/20 border-t-orange-400 animate-spin-reverse"></div>
         </div>
 
         {/* Progress Bar */}
-        <div className="h-1 mx-auto mb-4 overflow-hidden rounded-full w-72 bg-orange-500/20">
+        <div className="overflow-hidden mx-auto mb-4 w-72 h-1 rounded-full bg-orange-500/20">
           <div
-            className="h-full transition-all duration-300 ease-out bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300"
+            className="h-full bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300 transition-all duration-300 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>

@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import { FaCode, FaServer, FaCloud, FaLaptopCode, FaChartLine, FaBrain } from "react-icons/fa";
 import Expertise from "./Expertise"
 import Internship from "./Internship"
+import LiveProject from "./LiveProject"
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -72,9 +73,9 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
         loop
         muted
         autoPlay
-        className="absolute top-0 left-0 object-cover object-center size-full"
+        className="object-cover object-center absolute top-0 left-0 size-full"
       />
-      <div className="relative z-10 flex flex-col justify-between p-5 size-full text-blue-50">
+      <div className="flex relative z-10 flex-col justify-between p-5 text-blue-50 size-full">
         <div>
           <h1 className="bento-title special-font">{title}</h1>
           {description && (
@@ -88,11 +89,11 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
             onMouseMove={handleMouseMove}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="relative flex items-center gap-1 px-5 py-2 overflow-hidden text-xs uppercase bg-black rounded-full cursor-pointer border-hsla w-fit text-white/20"
+            className="flex overflow-hidden relative gap-1 items-center px-5 py-2 text-xs uppercase bg-black rounded-full cursor-pointer border-hsla w-fit text-white/20"
           >
             {/* Radial gradient hover effect */}
             <div
-              className="absolute transition duration-300 opacity-0 pointer-events-none -inset-px"
+              className="absolute -inset-px opacity-0 transition duration-300 pointer-events-none"
               style={{
                 opacity: hoverOpacity,
                 background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
@@ -108,13 +109,14 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 const Features = () => (
-    <section className="bg-black pb-52">
+    <section className="pb-52 bg-black">
       <div className="container px-3 mx-auto md:px-10">
         <div className="container px-3 mx-auto md:px-10">
           <div className="px-5 py-32">
            <AbtBox/>
           </div>
         </div>
+        <LiveProject/>
         <Internship/>
         <Projects/>
   

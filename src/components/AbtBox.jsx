@@ -35,7 +35,7 @@ const itemVariants = {
 
 const AbtBox = () => {
   return (
-    <div>
+    <div id='about'>
       {/* Name Heading */}
       <h1 className="text-white special-font hero-heading flex-center">
         <b>A</b>bout <b className='text-orange-600'>Me</b>
@@ -67,8 +67,8 @@ const AbtBox = () => {
 
           {/* Education Section */}
           <BentoTilt>
-            <section className="p-4 mt-4 bg-black border border-gray-800 rounded-lg bg-opacity-30 backdrop-blur-sm sm:p-6">
-              <h4 className="flex items-center gap-2 mb-2 text-lg font-semibold text-orange-600 sm:text-xl sm:mb-3">
+            <section className="p-4 mt-4 bg-black bg-opacity-30 rounded-lg border border-gray-800 backdrop-blur-sm sm:p-6">
+              <h4 className="flex gap-2 items-center mb-2 text-lg font-semibold text-orange-600 sm:text-xl sm:mb-3">
                 <FaGraduationCap className="flex-shrink-0" /> Education
               </h4>
               <div className="pl-3 ml-2 text-sm border-l-2 border-orange-600 sm:ml-4 sm:pl-4 sm:text-base">
@@ -102,7 +102,7 @@ const AbtBox = () => {
           </BentoTilt>
 
           <BentoTilt>
-            <section className="p-4 mt-4 bg-black border border-gray-800 rounded-lg bg-opacity-30 backdrop-blur-sm sm:mt-6 sm:p-6">
+            <section className="p-4 mt-4 bg-black bg-opacity-30 rounded-lg border border-gray-800 backdrop-blur-sm sm:mt-6 sm:p-6">
               <h4 className="mb-2 text-lg font-semibold text-orange-600 sm:text-xl sm:mb-3">Professional Goals</h4>
               <ul className="space-y-1 text-sm text-gray-300 sm:space-y-2 sm:text-base">
                 <li className="flex items-start">
@@ -136,7 +136,7 @@ const AbtBox = () => {
           className="pt-4 sm:pt-8"
         >
           <h1 className="text-white special-font hero-heading flex-center">
-        <b>Professional</b><b className='text-orange-600'>Service</b>
+        <b>Technical</b><b className='text-orange-600'>Services</b>
       </h1>
 
           <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3 sm:gap-6">
@@ -183,9 +183,9 @@ const AbtBox = () => {
                 variants={itemVariants}
                 className="relative group"
               >
-                <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-r from-orange-700 to-yellow-600 rounded-xl group-hover:opacity-100 -z-10 blur"></div>
-                <div className="h-full p-4 transition-all duration-300 border border-gray-800 bg-gray-900/90 backdrop-blur-sm group-hover:border-orange-500 rounded-xl sm:p-6">
-                  <div className="flex items-center justify-center w-12 h-12 mb-3 transition-colors rounded-full bg-gray-800/50 sm:w-16 sm:h-16 sm:mb-4 group-hover:bg-orange-600/20">
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-700 to-yellow-600 rounded-xl opacity-0 blur transition-opacity duration-300 group-hover:opacity-100 -z-10"></div>
+                <div className="p-4 h-full rounded-xl border border-gray-800 backdrop-blur-sm transition-all duration-300 bg-gray-900/90 group-hover:border-orange-500 sm:p-6">
+                  <div className="flex justify-center items-center mb-3 w-12 h-12 rounded-full transition-colors bg-gray-800/50 sm:w-16 sm:h-16 sm:mb-4 group-hover:bg-orange-600/20">
                     {service.icon}
                   </div>
                   <h4 className="mb-2 text-lg font-semibold text-orange-500 sm:text-xl sm:mb-3">

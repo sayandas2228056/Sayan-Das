@@ -7,6 +7,7 @@ import Story from "./components/Story";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import LoadingAnimation from "./components/LoadingAnimation";
+import LiveProject from "./components/LiveProject";
 function App() {
   const [contentLoaded, setContentLoaded] = useState(false);
 
@@ -23,7 +24,7 @@ function App() {
     <>
       <LoadingAnimation />
       {contentLoaded && (
-        <main className="relative w-screen min-h-screen overflow-x-hidden">
+        <main className="overflow-x-hidden relative w-screen min-h-screen">
           <NavBar />
           <Hero />
           <About />

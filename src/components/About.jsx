@@ -27,8 +27,8 @@ const About = () => {
   });
 
   return (
-    <div id="about" className="w-screen min-h-screen">
-      <div className="relative flex flex-col items-center gap-5 mb-8 mt-36">
+    <div  className="w-screen min-h-screen">
+      <div className="flex relative flex-col gap-5 items-center mt-36 mb-8">
         <p className="font-general text-sm uppercase md:text-[10px]">
           Welcome to Sayan's Portfolio
         </p>
@@ -52,7 +52,7 @@ const About = () => {
           <img
             src="img/about.webp"
             alt="Background"
-            className="absolute top-0 left-0 object-cover size-full"
+            className="object-cover absolute top-0 left-0 size-full"
           />
         </div>
       </div>
