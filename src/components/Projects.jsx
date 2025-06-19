@@ -98,7 +98,7 @@ const Projects = () => {
   const visibleProjects = showAll ? sortedProjects : sortedProjects.slice(0, 6);
 
   return (
-    <div >
+    <div className='w-screen bg-black'>
       {/* Heading */}
       <h1 className="text-white special-font hero-heading flex-center">
         <b>P</b>roject <b className="text-orange-600">works</b>

@@ -35,13 +35,13 @@ const itemVariants = {
 
 const AbtBox = () => {
   return (
-    <div id='about' className="px-4 mx-auto w-full max-w-7xl sm:px-6 lg:px-8">
+      <div id='about'>
       {/* Name Heading */}
       <h1 className="text-white special-font hero-heading flex-center">
         <b>A</b>bout <b className='text-orange-600'>Me</b>
       </h1>
       
-      <div className="flex flex-col gap-8 mt-8 md:flex-row">
+      <div className="flex flex-col gap-8 md:flex-row">
         {/* About + Education */}
         
         <div className="md:w-1/2">
@@ -52,7 +52,7 @@ const AbtBox = () => {
                 Professional Profile
               </h3>
               <p className="text-base leading-relaxed text-gray-300 sm:text-lg">
-                I&apos;m <span className="font-semibold text-white">Sayan Das</span>, a dedicated
+                I'm <span className="font-semibold text-white">Sayan Das</span>, a dedicated
                 <span className="font-semibold text-white"> Computer Science Engineer</span> with expertise in
                 full-stack development and a passion for creating innovative technology solutions.
               </p>
@@ -81,7 +81,7 @@ const AbtBox = () => {
                 <p className="text-gray-400">2020-2022</p>
 
                 <p className="mt-2 font-medium text-white sm:mt-3">Secondary Examination (ICSE Boards)</p>
-                <p className="text-gray-400">ST Paul&apos;s School, Rampurhat, West Bengal</p>
+                <p className="text-gray-400">ST Paul's School, Rampurhat, West Bengal</p>
                 <p className="text-gray-400">2007-2020</p>
               </div>
             </section>
@@ -96,7 +96,7 @@ const AbtBox = () => {
                 My Vision
               </h3>
               <p className="text-base leading-relaxed text-gray-300 sm:text-lg">
-                I aim to leverage cutting-edge technologies to develop solutions that address real-world challenges. My goal is to contribute to high-impact projects that push the boundaries of what&apos;s possible in web development and cloud computing.
+                I aim to leverage cutting-edge technologies to develop solutions that address real-world challenges. My goal is to contribute to high-impact projects that push the boundaries of what's possible in web development and cloud computing.
               </p>
             </section>
           </BentoTilt>
@@ -136,7 +136,7 @@ const AbtBox = () => {
           className="pt-4 sm:pt-8"
         >
           <h1 className="text-white special-font hero-heading flex-center">
-        <b>Technical</b><b className='text-orange-600'>Services</b>
+        <b>Professional</b><b className='text-orange-600'>Service</b>
       </h1>
 
           <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-3 sm:gap-6">

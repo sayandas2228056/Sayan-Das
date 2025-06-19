@@ -95,7 +95,7 @@ const ProjectCarousel = ({ images, title }) => {
         {/* Zoomed image preview, only on hover */}
         {zoomed && (
           <div
-            className="absolute z-40 pointer-events-none"
+            className="absolute z-40"
             style={{
               left: mousePos.x + 24 > (imgBoxRef.current?.offsetWidth || 0) - 180 ? (imgBoxRef.current?.offsetWidth || 0) - 180 : mousePos.x + 24,
               top: mousePos.y - 80 < 0 ? 0 : mousePos.y - 80,

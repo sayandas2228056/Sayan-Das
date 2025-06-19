@@ -2,10 +2,10 @@ import { useState, useRef } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 import Technologies from "./Technologies";
 import AbtBox from "./AbtBox";
-import React from "react"; 
-import Expertise from "./Expertise"
-import Internship from "./Internship"
-import LiveProject from "./LiveProject"
+import Projects from "./Projects";
+import Expertise from "./Expertise";
+import Internship from "./Internship";
+import LiveProject from "./LiveProject"; 
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -13,16 +13,11 @@ export const BentoTilt = ({ children, className = "" }) => {
 
   const handleMouseMove = (event) => {
     if (!itemRef.current) return;
-
-    const { left, top, width, height } =
-      itemRef.current.getBoundingClientRect();
-
+    const { left, top, width, height } = itemRef.current.getBoundingClientRect();
     const relativeX = (event.clientX - left) / width;
     const relativeY = (event.clientY - top) / height;
-
     const tiltX = (relativeY - 0.5) * 5;
     const tiltY = (relativeX - 0.5) * -5;
-
     const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.95, .95, .95)`;
     setTransformStyle(newTransform);
   };
@@ -52,7 +47,6 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
   const handleMouseMove = (event) => {
     if (!hoverButtonRef.current) return;
     const rect = hoverButtonRef.current.getBoundingClientRect();
-
     setCursorPosition({
       x: event.clientX - rect.left,
       y: event.clientY - rect.top,
@@ -78,7 +72,6 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
             <p className="mt-3 text-xs max-w-64 md:text-base">{description}</p>
           )}
         </div>
-
         {isComingSoon && (
           <div
             ref={hoverButtonRef}
@@ -105,35 +98,44 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 const Features = () => (
-    <section className="w-full bg-black">
-      {/* About Section */}
-      <div className="py-16 w-full md:py-24">
-        <AbtBox/>
+  <section className="pb-52 bg-black">
+    <div className="container px-3 mx-auto md:px-10">
+      {/* About Section (with BentoTilt for interactivity) */}
+      <div className="flex justify-center px-5 py-32">
+          <AbtBox />
       </div>
+
       
-      {/* Live Projects Section */}
-      <div className="w-full">
-        <LiveProject/>
+      <div className="flex justify-center px-5 py-16">
+        <LiveProject />
       </div>
-      
-      {/* Internship Section */}
-      <div className="w-full">
-        <Internship/>
+
+      <div className="flex justify-center px-5 py-16">
+        <Internship />
       </div>
-      
+
+
+      {/* Projimage.pngects Section */}
+      <div className="flex justify-center px-5 py-16">
+        <Projects />
+      </div>
       {/* Expertise Section */}
-      <div className="py-16 w-full md:py-24">
+      <div className="py-16">
         <h1 className="mb-8 text-white special-font hero-heading flex-center">
           <b>My</b> <b className='text-orange-600'>Expertise</b>
         </h1>
-        <Expertise src="videos/feature-3.mp4" />
+        <BentoTilt className="rounded-xl border transition-transform duration-300 border-orange-500/30 bg-black/70 will-change-transform">
+          <Expertise src="videos/feature-3.mp4" />
+        </BentoTilt>
       </div>
-      
       {/* Technologies Section */}
-      <div className="py-16 w-full md:py-24">
-        <Technologies/>
+      <div className="py-16">
+        <BentoTilt className="rounded-xl border transition-transform duration-300 border-orange-500/30 bg-black/70 will-change-transform">
+          <Technologies />
+        </BentoTilt>
       </div>
-    </section>
+    </div>
+  </section>
 );
 
 export default Features;
