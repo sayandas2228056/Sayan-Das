@@ -1,8 +1,7 @@
-import React from "react";
+// import React from "react";
 import { motion } from "framer-motion";
 import {
   FaDownload,
-  FaGraduationCap,
   FaTrophy,
   FaCertificate,
 } from "react-icons/fa";
@@ -28,7 +27,7 @@ const Resume = () => {
   return (
     <section
       id="resume"
-      className="px-4 py-20 text-white bg-transparent sm:px-6 md:px-10 lg:px-16"
+      className="px-4 py-20 w-screen min-h-screen text-white bg-black sm:px-6 md:px-10 lg:px-16"
     >
       <motion.div
         className="mx-auto max-w-7xl"

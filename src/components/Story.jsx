@@ -48,9 +48,9 @@ const FloatingImage = () => {
   };
 
   return (
-    <div id="story" className="w-screen bg-black min-h-dvh text-blue-50">
+    <div id="story" className="px-4 w-screen min-h-screen text-blue-50 bg-black">
       <div className="flex flex-col items-center py-10 pb-24 size-full">
-        <p className="font-general text-sm uppercase md:text-[10px]">
+        <p className="text-sm uppercase font-general md:text-base lg:text-lg xl:text-xl">
           Here is My Resume
         </p>
 
@@ -58,7 +58,6 @@ const FloatingImage = () => {
           title="Achievements, Certifications"
           containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
         />
-
         <Resume />
 
         {/* Spacing to push the next section below the resume */}
@@ -69,13 +68,13 @@ const FloatingImage = () => {
           ref={frameRef}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="flex justify-center w-full px-6 md:px-20"
+          className="flex justify-center px-6 w-full md:px-20"
         >
           <div className="flex flex-col items-center h-full w-fit md:items-start">
-            <p className="max-w-sm mt-3 text-center font-circular-web text-violet-50 md:text-start">
+            <p className="mt-3 max-w-sm text-center text-violet-50 font-circular-web md:text-start">
               Ready to Bring Your Ideas to Life?
             </p>
-            <p className="max-w-sm mt-3 text-center font-circular-web text-violet-50 md:text-start">
+            <p className="mt-3 max-w-sm text-center text-violet-50 font-circular-web md:text-start">
               Let's discuss how we can work together to create innovative technology solutions for your projects.
             </p>
             <a href="#contact" className="mt-5">

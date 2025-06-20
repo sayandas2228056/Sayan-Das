@@ -35,9 +35,9 @@ const itemVariants = {
 
 const AbtBox = () => {
   return (
-      <div id='about'>
+      <div id='about' className="w-full max-w-7xl mx-auto px-4">
       {/* Name Heading */}
-      <h1 className="text-white special-font hero-heading flex-center">
+      <h1 className="text-white special-font hero-heading flex-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
         <b>A</b>bout <b className='text-orange-600'>Me</b>
       </h1>
       
@@ -135,7 +135,7 @@ const AbtBox = () => {
           viewport={{ once: true }}
           className="pt-4 sm:pt-8"
         >
-          <h1 className="text-white special-font hero-heading flex-center">
+          <h1 className="text-white special-font hero-heading flex-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
         <b>Professional</b><b className='text-orange-600'>Service</b>
       </h1>
 

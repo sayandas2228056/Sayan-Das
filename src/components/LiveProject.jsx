@@ -308,17 +308,17 @@ const LiveProject = () => {
   const visibleProjects = showAll ? projects : projects.slice(0, 2);
 
   return (
-    <div id="projects" className="w-screen text-blue-50 bg-black min-h-dvh">
+    <div id="projects" className="w-full max-w-7xl mx-auto px-4 text-blue-50 bg-black min-h-dvh">
       <div className="flex relative flex-col items-center py-10 pb-24 size-full">
-        <h1 className="text-white special-font hero-heading flex-center">
+        <h1 className="text-white special-font hero-heading flex-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
           <b>Protfolio</b> <b className="text-orange-600">projects</b>
         </h1>
-        <p className="px-4 mt-4 max-w-2xl text-center text-gray-300">
+        <p className="px-4 mt-4 max-w-2xl text-center text-gray-300 text-base md:text-lg lg:text-xl">
           Explore my portfolio of live projects showcasing full-stack development, 
           cloud integration, and modern web technologies.
         </p>
         <div className="px-4 mx-auto mt-8 w-full max-w-7xl">
-          <div className="grid gap-8 lg:grid-cols-2 xl:grid-cols-2">
+          <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
             {visibleProjects.map((project, index) => {
               const projIdx = projects.indexOf(project);
               return (

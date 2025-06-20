@@ -65,7 +65,7 @@ const Expertise = () => {
           <div className="mx-auto">
             {expertiseData.map((category, categoryIndex) => (
               <div key={categoryIndex} className="mb-12">
-                <h3 className="pb-2 mb-6 text-xl font-semibold text-orange-500 border-b border-orange-800 sm:text-2xl">
+                <h3 className="pb-2 mb-6 text-xl font-semibold text-orange-500 border-b border-orange-800 sm:text-2xl md:text-3xl lg:text-4xl">
                   {category.category}
                 </h3>
 

@@ -6,13 +6,13 @@ const Footer = () => {
 
   return (
     <footer className="py-10 mt-12 text-white bg-black border-t border-gray-800">
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 w-full">
         
         {/* Top Section */}
         <div className="flex flex-col gap-6 justify-between items-center text-center md:flex-row md:text-left md:gap-0">
           <div>
-            <h3 className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600 sm:text-xl">Sayan Das</h3>
-            <p className="mt-1 text-sm text-gray-400">Full-Stack Developer</p>
+            <h3 className="text-lg font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600 sm:text-xl md:text-2xl lg:text-3xl">Sayan Das</h3>
+            <p className="mt-1 text-sm text-gray-400 md:text-base lg:text-lg">Full-Stack Developer</p>
           </div>
 
           <div className="flex flex-col items-center md:items-end">

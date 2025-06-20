@@ -102,14 +102,14 @@ const Hero = () => {
           />
 
           <div className="absolute top-0 left-0 z-40 size-full bg-black/50">
-            <div className="flex flex-col gap-8 justify-center items-center px-5 h-full sm:px-10 lg:flex-row lg:gap-16 lg:justify-between lg:px-20">
+            <div className="flex flex-col gap-8 justify-center items-center px-4 sm:px-10 h-full lg:flex-row lg:gap-16 lg:justify-between lg:px-20 max-w-7xl mx-auto w-full">
               
               {/* Text Content - Left Side */}
               <div className="mt-6 w-full max-w-xl sm:mt-10 lg:w-1/2">
                 <h2 className="text-base font-semibold text-gray-300 sm:text-lg md:text-2xl hero-text-animation">
                   Hey I&apos;m
                 </h2>
-                <h1 className="text-5xl leading-none text-blue-100 special-font hero-heading hero-text-animation sm:text-7xl md:text-8xl lg:text-9xl">
+                <h1 className="text-5xl leading-none text-blue-100 special-font hero-heading hero-text-animation sm:text-7xl md:text-8xl lg:text-7xl xl:text-8xl">
                   S<b>a</b>y<b>a</b>n D<b>a</b>s
                 </h1>
                 <h2 className="mt-2 text-base font-semibold text-gray-300 sm:text-lg md:text-2xl hero-text-animation">
