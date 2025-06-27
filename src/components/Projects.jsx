@@ -4,18 +4,12 @@ import { BentoTilt } from './Features';
 
 const projects = [
   {
-    title:'Emager- Ai based image generator',
-    description:'A image generator that uses AI to generate images.',
-    technologies:'React.js, Node.js, Express.js, MongoDB, GeminiAPI',
-    status:'Work in Progress',
-    repo:'https://github.com/sayandas2228056/Emager',
-  },
-  {
-    title:'InteliCV - AI Based Resume Builder',
-    description:'A resume builder that uses AI to generate resumes.',
-    technologies:'React.js, Node.js, Express.js, MongoDB, GeminiAPI',
-    status:'Work in Progress',
-    repo:'https://github.com/sayandas2228056/InteliCV',
+    title:'NexBrief - AI-Powered News Aggregator',
+    description:'A modern news aggregation platform that delivers personalized, real-time news summaries using AI and GNews API.',
+    technologies:'Node.js, Express, React.js, MongoDB, Tailwind CSS, JWT, Axios, GNews API',
+    status:'Completed',
+    repo:'https://github.com/sayandas2228056/NexBrief',
+    link:'https://nexbrief.vercel.app'
   },
   {
     title: 'InteliView - Ai Based Interview Preparator',

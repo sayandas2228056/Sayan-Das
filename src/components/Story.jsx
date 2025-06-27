@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
 import Resume from "./Resume";
-import Contact from "./Contact";
+// import Contact from "./Contact";
 
 const FloatingImage = () => {
   const frameRef = useRef(null);
@@ -54,6 +54,8 @@ const FloatingImage = () => {
           Here is My Resume
         </p>
 
+      
+
         <AnimatedTitle
           title="Achievements, Certifications"
           containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
@@ -75,7 +77,7 @@ const FloatingImage = () => {
               Ready to Bring Your Ideas to Life?
             </p>
             <p className="mt-3 max-w-sm text-center text-violet-50 font-circular-web md:text-start">
-              Let's discuss how we can work together to create innovative technology solutions for your projects.
+              Let&apos;s discuss how we can work together to create innovative technology solutions for your projects.
             </p>
             <a href="#contact" className="mt-5">
   <Button

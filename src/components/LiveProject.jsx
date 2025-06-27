@@ -3,6 +3,12 @@ import { FaGithub, FaExternalLinkAlt, FaChevronLeft, FaChevronRight, FaCode, FaC
 import { BentoTilt } from './Features';
 
 // Import all images
+import NexBrief from '../assets/project/NexBrief1.png';
+import NexBrief2 from '../assets/project/NexBrief2.png';
+import NexBrief3 from '../assets/project/NexBrief3.png';
+import NexBrief4 from '../assets/project/NexBrief4.png';
+import NexBrief5 from '../assets/project/NexBrief5.png';
+import NexBrief6 from '../assets/project/NexBrief6.png';
 import InteliView1 from '../assets/project/inteliview1.png';
 import InteliView2 from '../assets/project/inteliview2.png';
 import InteliView3 from '../assets/project/inteliview3.png';
@@ -223,17 +229,31 @@ const LiveProject = () => {
       title: "InteliView",
       type: "AI Interview Platform",
       images: [InteliView1, InteliView2, InteliView3, InteliView4, InteliView5, InteliView6, InteliView7],
-      description: "An intelligent interview platform that revolutionizes the hiring process with AI-powered mock interviews, real-time feedback, and comprehensive analytics.",
+      description: "An AI-powered web platform offering interview tests, resume analysis, dashboard, and personalized guide for interview.",
       features: [
-        "AI-powered mock test sessions",
-        "Real-time Resume Analysis and Feedback",
-        "Comprehensive performance analytics",
-        "Multiple interview guide",
-        "Progress tracking and improvement suggestions"
+        "Developed an AI-powered interview preparation platform featuring a resume analyzer, practice tests, and personalized guidance, with performance insights displayed on a dynamic dashboard.",
+        "Implemented JWT-based authentication along with a personalized profile page.",
+        "Enabled resume uploads and ATS-based keyword scoring on the backend using AI.",
+        "Developed user dashboards to track AI-test performance and provide AI based guide."
       ],
-      technologies: ["React.js", "Node.js", "Express", "MongoDB", "Together API", "JWT", "Tailwind CSS"],
+      technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "Axios", "JWT", "Together API", "Nodemailer"],
       githubUrl: "https://github.com/yourusername/inteliview",
       liveUrl: "https://inteli-view.vercel.app/"
+    },
+    {
+      title: "NexBrief",
+      type: "AI-Powered News Aggregator",
+      images: [NexBrief, NexBrief2, NexBrief3, NexBrief4, NexBrief5, NexBrief6],
+      description: "A modern news aggregation platform that delivers personalized, real-time news summaries using AI and GNews API.",
+      features: [
+        "An AI-powered news summarizer that auto-condenses articles and offers bookmarking, delivering concise insights.",
+        "Implemented JWT-based authentication along with a personalized profile page.",
+        "Aggregated and summarized news from multiple sources using GNews API and AI-powered summarization.",
+        "Enabled bookmarking, trending topics, and category-based news feeds with real-time updates."
+      ],
+      technologies: ["Node.js", "Express", "React.js", "MongoDB", "Tailwind CSS", "JWT", "Axios", "GNews API"],
+      githubUrl: "https://github.com/sayandas2228056/NexBrief",
+      liveUrl: "https://nexbrief.vercel.app"
     },
     {
       title: "Zenitech Solutions",
@@ -311,11 +331,10 @@ const LiveProject = () => {
     <div id="projects" className="w-full max-w-7xl mx-auto px-4 text-blue-50 bg-black min-h-dvh">
       <div className="flex relative flex-col items-center py-10 pb-24 size-full">
         <h1 className="text-white special-font hero-heading flex-center text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
-          <b>Protfolio</b> <b className="text-orange-600">projects</b>
+          <b>Portfolio</b> <b className="text-orange-600">Projects</b>
         </h1>
         <p className="px-4 mt-4 max-w-2xl text-center text-gray-300 text-base md:text-lg lg:text-xl">
-          Explore my portfolio of live projects showcasing full-stack development, 
-          cloud integration, and modern web technologies.
+          Explore my portfolio of live projects showcasing full-stack development, AI, cloud integration, and modern web technologies.
         </p>
         <div className="px-4 mx-auto mt-8 w-full max-w-7xl">
           <div className="grid gap-8 grid-cols-1 md:grid-cols-2 xl:grid-cols-2">

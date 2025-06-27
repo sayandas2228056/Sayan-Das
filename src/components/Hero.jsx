@@ -134,7 +134,15 @@ const Hero = () => {
                       href="#projects"
                       className="px-5 py-2 font-semibold text-center text-orange-600 bg-transparent rounded-lg border-2 border-orange-500 transition-all duration-200 transform sm:px-6 sm:py-3 hover:bg-orange-500/10 hover:shadow-lg hover:shadow-orange-500/20 hover:-translate-y-1"
                     >
-                      View Portfolio
+                      View Projects
+                    </a>
+                    <a
+                      href="https://drive.google.com/file/d/1Ql1gK7SEEavsQIC00qKQZW6Re5tDpPQy/view"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2 font-semibold text-center text-white bg-orange-500 rounded-lg transition-all duration-200 transform sm:px-6 sm:py-3 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1"
+                    >
+                      View Resume
                     </a>
                   </div>
                 </div>

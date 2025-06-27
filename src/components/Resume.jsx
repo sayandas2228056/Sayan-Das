@@ -48,7 +48,7 @@ const Resume = () => {
         {/* Resume Download Button */}
         <motion.div className="mb-16 text-center" variants={itemVariants}>
           <a
-            href="https://drive.google.com/file/d/13G9jrJY7AnTTE4BNYEKMmMzerJsLXhzv/view?usp=sharing"
+            href="https://drive.google.com/file/d/1Ql1gK7SEEavsQIC00qKQZW6Re5tDpPQy/view"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex gap-2 items-center px-6 py-3 text-base font-medium text-white bg-gradient-to-r from-orange-600 to-orange-500 rounded-lg transition-all duration-300 transform group sm:px-8 sm:py-4 sm:text-lg hover:shadow-lg hover:shadow-orange-500/30 hover:-translate-y-1"
